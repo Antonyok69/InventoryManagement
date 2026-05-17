@@ -36,7 +36,7 @@ namespace InventoryApp.Data
                 dt.Rows.Add(
                     (int)p.id,
                     (string)p.name,
-                    Convert.ToInt32(p.price),
+                    Convert.ToInt32(Convert.ToDecimal(p.price)),
                     0,
                     0,
                     (string)p.category,
