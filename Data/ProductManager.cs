@@ -75,14 +75,14 @@ namespace InventoryApp.Data
             };
         }
 
-        public void InsertProduct(string name, int price, int stock, int unit, string category)
+        public void InsertProduct(string name, int price, int stock, string category, string image)
         {
             var product = new
             {
                 name = name,
                 price = price,
                 category = category,
-                image = "default.jpg"
+                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : image
             };
 
             string json = JsonConvert.SerializeObject(product);
@@ -91,15 +91,14 @@ namespace InventoryApp.Data
             HttpResponseMessage response = client.PostAsync("products", content).Result;
             response.EnsureSuccessStatusCode();
         }
-
-        public void UpdateProduct(int id, string name, int price, int stock, int unit, string category)
+        public void UpdateProduct(int id, string name, int price, int stock, string category, string image)
         {
             var product = new
             {
                 name = name,
                 price = price,
                 category = category,
-                image = "default.jpg"
+                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : image
             };
 
             string json = JsonConvert.SerializeObject(product);
