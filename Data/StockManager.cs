@@ -9,19 +9,16 @@ namespace InventoryApp.Data
             return 0;
         }
 
-        // FIXED NAME
         public int GetCurrentStockById(int productId)
         {
             return 0;
         }
 
-        // FIXED METHOD
         public void UpdateStock(int productId, int addedStock)
         {
-            // Disabled for API integration testing
+            // Temporary disabled
         }
 
-        // FIXED METHOD
         public int GetProductStock(int productId)
         {
             return 0;
@@ -29,12 +26,12 @@ namespace InventoryApp.Data
 
         public void AddStock(int productId, int addedStock)
         {
-            // Disabled for API integration testing
+            // Temporary disabled
         }
 
         public void InsertHistory(int productId, int addedStock)
         {
-            // Disabled for API integration testing
+            // Temporary disabled
         }
     }
 }

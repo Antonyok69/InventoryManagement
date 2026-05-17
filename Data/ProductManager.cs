@@ -37,7 +37,7 @@ namespace InventoryApp.Data
                     (int)p.id,
                     (string)p.name,
                     Convert.ToInt32(Convert.ToDecimal(p.price)),
-                    0,
+                    p.stock == null ? 0 : Convert.ToInt32(p.stock),
                     0,
                     (string)p.category,
                     (string)p.image
@@ -81,6 +81,7 @@ namespace InventoryApp.Data
             {
                 name = name,
                 price = price,
+                stock = stock,
                 category = category,
                 image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : image
             };
@@ -97,6 +98,7 @@ namespace InventoryApp.Data
             {
                 name = name,
                 price = price,
+                stock = stock,
                 category = category,
                 image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : image
             };
