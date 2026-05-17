@@ -70,10 +70,6 @@ namespace InventoryApp.Data
         {
             return new string[]
             {
-                "Running",
-                "Basketball",
-                "Casual",
-                "Sneakers",
                 "Men",
                 "Women"
             };
