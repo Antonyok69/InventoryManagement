@@ -28,7 +28,6 @@ namespace InventoryApp.Data
             dt.Columns.Add("name", typeof(string));
             dt.Columns.Add("price", typeof(int));
             dt.Columns.Add("stock", typeof(int));
-            dt.Columns.Add("unit", typeof(int));
             dt.Columns.Add("category", typeof(string));
             dt.Columns.Add("image", typeof(string));
 
@@ -39,7 +38,6 @@ namespace InventoryApp.Data
                     (string)p.name,
                     Convert.ToInt32(Convert.ToDecimal(p.price)),
                     p.stock == null ? 0 : Convert.ToInt32(p.stock),
-                    0,
                     (string)p.category,
                     (string)p.image
                 );

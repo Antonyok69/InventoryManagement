@@ -18,7 +18,7 @@ namespace InventoryApp
             Text = "Add New Product";
         }
 
-        public ProductDialog(ProductManager manager, int id, string name, int price, int stock, int unit, string category)
+        public ProductDialog(ProductManager manager, int id, string name, int price, int stock, string category)
         {
             InitializeComponent();
             productManager = manager;
