@@ -1,6 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace InventoryApp.InventoryApp.dlg
 {
@@ -12,36 +12,42 @@ namespace InventoryApp.InventoryApp.dlg
             DisplayTransaction();
         }
 
-        //FETCH DATA FROM TRANSACTION TABLE
+        // TEMPORARY TRANSACTION DISPLAY
         private void DisplayTransaction()
         {
-            int currentUID = UserSession.SessionUID;
+            DataTable dt = new DataTable();
 
-            using (SqlConnection con = ConnectionManager.GetConnection())
-            {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("SELECT Date, Subtotal, DiscountPercent, DiscountAmount, Total, Change, TransactionId FROM [Transaction] WHERE Uid = @Uid", con))
-                {
-                    cmd.Parameters.AddWithValue("@Uid", currentUID);
+            dt.Columns.Add("Date");
+            dt.Columns.Add("Subtotal");
+            dt.Columns.Add("DiscountPercent");
+            dt.Columns.Add("DiscountAmount");
+            dt.Columns.Add("Total");
+            dt.Columns.Add("Change");
+            dt.Columns.Add("TransactionId");
 
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                }
-                con.Close();
-            }
+            // SAMPLE DATA
+            dt.Rows.Add(
+                DateTime.Now.ToString("yyyy-MM-dd"),
+                "4500",
+                "0",
+                "0",
+                "4500",
+                "500",
+                "TRX001"
+            );
+
+            dataGridView1.DataSource = dt;
         }
 
-        //CELL DOUBLE CLICK EVENT FOR OPENING DETAILS
+        // CELL DOUBLE CLICK EVENT
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                string id = (string)dataGridView1.SelectedRows[0].Cells["TransactionId"].Value;
-                Details dlg = new Details(id);
-                dlg.ShowDialog();
-            }
+            MessageBox.Show(
+                "Transaction details temporarily disabled for API integration testing.",
+                "Info",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }
