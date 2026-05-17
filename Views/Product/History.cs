@@ -1,5 +1,5 @@
-﻿using System.Data;
-using System.Data.SqlClient;
+﻿using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace InventoryApp.InventoryApp.dlg
@@ -7,33 +7,25 @@ namespace InventoryApp.InventoryApp.dlg
     public partial class History : Form
     {
         private readonly int productId;
+
         public History(int id)
         {
             InitializeComponent();
             productId = id;
             DisplayHistory();
-
         }
 
-        //FETCH DATA FROM HISTORY TABLE
+        // TEMPORARY HISTORY DISPLAY
         private void DisplayHistory()
         {
-            using (SqlConnection con = ConnectionManager.GetConnection())
-            {
-                con.Open();
+            DataTable dt = new DataTable();
 
-                using (SqlCommand cmd = new SqlCommand("SELECT ProductID, [Added Stocks], [Date] FROM History WHERE ProductID = @id", con))
-                {
-                    cmd.Parameters.AddWithValue("@id", productId);
+            dt.Columns.Add("ProductID", typeof(int));
+            dt.Columns.Add("Added Stocks", typeof(int));
+            dt.Columns.Add("Date", typeof(string));
 
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                }
-
-                con.Close();
-            }
+            // no stock history yet because SQL Server is disabled
+            dataGridView1.DataSource = dt;
         }
     }
 }
