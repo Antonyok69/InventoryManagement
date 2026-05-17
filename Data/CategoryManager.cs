@@ -11,12 +11,8 @@ namespace InventoryApp.Data
             dt.Columns.Add("ID", typeof(int));
             dt.Columns.Add("CategoryItem", typeof(string));
 
-            dt.Rows.Add(1, "Running");
-            dt.Rows.Add(2, "Basketball");
-            dt.Rows.Add(3, "Casual");
-            dt.Rows.Add(4, "Sneakers");
-            dt.Rows.Add(5, "Men");
-            dt.Rows.Add(6, "Women");
+            dt.Rows.Add(1 , "Men");
+            dt.Rows.Add(2, "Women");
 
             return dt;
         }
