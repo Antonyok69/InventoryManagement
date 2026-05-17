@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.IO;
 
 namespace InventoryApp.Data
 {
@@ -83,7 +84,7 @@ namespace InventoryApp.Data
                 price = price,
                 stock = stock,
                 category = category,
-                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : image
+                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : Path.GetFileName(image)
             };
 
             string json = JsonConvert.SerializeObject(product);
@@ -100,7 +101,7 @@ namespace InventoryApp.Data
                 price = price,
                 stock = stock,
                 category = category,
-                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : image
+                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : Path.GetFileName(image)
             };
 
             string json = JsonConvert.SerializeObject(product);
