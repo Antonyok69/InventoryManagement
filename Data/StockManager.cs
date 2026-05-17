@@ -9,7 +9,20 @@ namespace InventoryApp.Data
             return 0;
         }
 
-        public int GetCurrentStock(int productId)
+        // FIXED NAME
+        public int GetCurrentStockById(int productId)
+        {
+            return 0;
+        }
+
+        // FIXED METHOD
+        public void UpdateStock(int productId, int addedStock)
+        {
+            // Disabled for API integration testing
+        }
+
+        // FIXED METHOD
+        public int GetProductStock(int productId)
         {
             return 0;
         }
