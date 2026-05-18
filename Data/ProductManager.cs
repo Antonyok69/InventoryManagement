@@ -74,40 +74,68 @@ namespace InventoryApp.Data
             };
         }
 
-        public void InsertProduct(string name, int price, int stock, string category, string image)
+        private string SaveImageToLaravelFolder(string image)
+{
+    string fileName = "default.jpg";
+
+    if (!string.IsNullOrWhiteSpace(image) && File.Exists(image))
+    {
+        fileName = Path.GetFileName(image);
+
+        string imagesFolder = @"C:\xampp\htdocs\ShoeStoreWebApp\public\images";
+
+        if (!Directory.Exists(imagesFolder))
         {
-            var product = new
-            {
-                name = name,
-                price = price,
-                stock = stock,
-                category = category,
-                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : Path.GetFileName(image)
-            };
-
-            string json = JsonConvert.SerializeObject(product);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = client.PostAsync("products", content).Result;
-            response.EnsureSuccessStatusCode();
+            Directory.CreateDirectory(imagesFolder);
         }
+
+        string destinationPath = Path.Combine(imagesFolder, fileName);
+
+        File.Copy(image, destinationPath, true);
+    }
+
+    return fileName;
+}
+
+      public void InsertProduct(string name, int price, int stock, string category, string image)
+{
+    string fileName = SaveImageToLaravelFolder(image);
+
+    var product = new
+    {
+        name = name,
+        price = price,
+        stock = stock,
+        category = category,
+        image = fileName
+    };
+
+    string json = JsonConvert.SerializeObject(product);
+    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+    HttpResponseMessage response = client.PostAsync("products", content).Result;
+    response.EnsureSuccessStatusCode();
+}
+
         public void UpdateProduct(int id, string name, int price, int stock, string category, string image)
-        {
-            var product = new
-            {
-                name = name,
-                price = price,
-                stock = stock,
-                category = category,
-                image = string.IsNullOrWhiteSpace(image) ? "default.jpg" : Path.GetFileName(image)
-            };
+{
+    string fileName = SaveImageToLaravelFolder(image);
 
-            string json = JsonConvert.SerializeObject(product);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+    var product = new
+    {
+        name = name,
+        price = price,
+        stock = stock,
+        category = category,
+        image = fileName
+    };
 
-            HttpResponseMessage response = client.PutAsync("products/" + id, content).Result;
-            response.EnsureSuccessStatusCode();
-        }
+    string json = JsonConvert.SerializeObject(product);
+    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+    HttpResponseMessage response = client.PutAsync("products/" + id, content).Result;
+    response.EnsureSuccessStatusCode();
+}
 
         public void DeleteProduct(int id)
         {
