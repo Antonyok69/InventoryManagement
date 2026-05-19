@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Data\CartManager.cs" />
     <Compile Include="Data\CategoryManager.cs" />
+    <Compile Include="Data\OrderManager.cs" />
     <Compile Include="Data\ProductManager.cs" />
     <Compile Include="Data\StockManager.cs" />
     <Compile Include="Data\TransactionManager.cs" />
