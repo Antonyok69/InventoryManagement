@@ -21,7 +21,7 @@ namespace InventoryApp.InventoryApp
             // Initialize Cart item counter
             itemCountTimer = new Timer
             {
-                Interval = 1000
+                Interval = 10000
             };
             itemCountTimer.Tick += itemCountTimer_Tick;
             itemCountTimer.Start();
@@ -107,10 +107,17 @@ namespace InventoryApp.InventoryApp
         // CART COUNTER
         private void itemCountTimer_Tick(object sender, EventArgs e)
         {
-            OrderManager orderManager = new OrderManager();
-            int totalSales = orderManager.GetOrders().Rows.Count;
+            try
+            {
+                OrderManager orderManager = new OrderManager();
+                int totalSales = orderManager.GetOrders().Rows.Count;
 
-            radioButton3.Text = "Sale (" + totalSales.ToString() + ")";
+                radioButton3.Text = "Sale (" + totalSales.ToString() + ")";
+            }
+            catch
+            {
+                radioButton3.Text = "Sale";
+            }
         }
     }
 }
