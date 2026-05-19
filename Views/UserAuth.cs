@@ -150,5 +150,15 @@ namespace InventoryApp.Views
             }
         }
         #endregion
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserAuth_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
