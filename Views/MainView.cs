@@ -107,9 +107,10 @@ namespace InventoryApp.InventoryApp
         // CART COUNTER
         private void itemCountTimer_Tick(object sender, EventArgs e)
         {
-            CartManager cartManager = new CartManager();
-            int cartItemCount = cartManager.GetCartItemCount();
-            radioButton3.Text = "Sale (" + cartItemCount.ToString() + ")";
+            OrderManager orderManager = new OrderManager();
+            int totalSales = orderManager.GetOrders().Rows.Count;
+
+            radioButton3.Text = "Sale (" + totalSales.ToString() + ")";
         }
     }
 }
