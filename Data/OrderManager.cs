@@ -44,5 +44,13 @@ namespace InventoryApp.Data
 
             return dt;
         }
+
+
+          public void DeleteOrder(int id)
+         {
+         HttpResponseMessage response = client.DeleteAsync("orders/" + id).Result;
+         response.EnsureSuccessStatusCode();
+         }
+
     }
 }
