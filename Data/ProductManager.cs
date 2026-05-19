@@ -82,7 +82,7 @@ namespace InventoryApp.Data
     {
         fileName = Path.GetFileName(image);
 
-        string imagesFolder = @"C:\xampp\htdocs\ShoeStoreWebApp\public\images";
+        string imagesFolder = @"C:\Users\Anton\ShoeStoreWebApp\public\images";
 
         if (!Directory.Exists(imagesFolder))
         {
