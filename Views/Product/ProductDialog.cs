@@ -18,7 +18,7 @@ namespace InventoryApp
             Text = "Add New Product";
         }
 
-        public ProductDialog(ProductManager manager, int id, string name, int price, int stock, string category)
+        public ProductDialog(ProductManager manager, int id, string name, int price, int stock, string category, string image)
         {
             InitializeComponent();
             productManager = manager;
@@ -27,7 +27,7 @@ namespace InventoryApp
             textBox1.Text = name;
             textBox2.Text = price.ToString();
             textBox3.Text = stock.ToString();
-            textBox4.Text = "default.jpg";
+            textBox4.Text = image;
             comboBox1.Text = category;
 
             comboBox1.Items.AddRange(productManager.GetCategoryItems());

@@ -71,9 +71,10 @@ namespace InventoryApp
                 int price = (int)row.Cells["price"].Value;
                 int stock = (int)row.Cells["stock"].Value;
                 string category = row.Cells["category"].Value.ToString();
+                string image = row.Cells["image"].Value.ToString();
 
                 // Pass the data to EditDialog
-                ProductDialog dlg = new ProductDialog(productManager, id, name, price, stock, category);
+                ProductDialog dlg = new ProductDialog(productManager, id, name, price, stock, category, image);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     dataGridView1.DataSource = productManager.GetProducts();
