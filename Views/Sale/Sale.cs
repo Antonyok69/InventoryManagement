@@ -16,21 +16,33 @@ namespace InventoryApp.InventoryApp.Views
             DisplayOrders();
         }
 
-private void DisplayOrders()
-{
-    dataGridView1.Columns.Clear();
-    dataGridView1.DataSource = null;
-    dataGridView1.AutoGenerateColumns = true;
+        private void DisplayOrders()
+        {
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = null;
+            dataGridView1.AutoGenerateColumns = true;
 
-    DataTable dt = orderManager.GetOrders();
-    dataGridView1.DataSource = dt;
+            DataTable dt = orderManager.GetOrders();
+            dataGridView1.DataSource = dt;
 
-    dataGridView1.ScrollBars = ScrollBars.Both;
-    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridView1.ScrollBars = ScrollBars.Both;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
-    dataGridView1.Columns["Address"].Width = 220;
-    dataGridView1.Columns["Date"].Width = 160;
-}
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.Width = 120;
+            }
+
+            if (dataGridView1.Columns["Address"] != null)
+            {
+                dataGridView1.Columns["Address"].Width = 220;
+            }
+
+            if (dataGridView1.Columns["Date"] != null)
+            {
+                dataGridView1.Columns["Date"].Width = 160;
+            }
+        }
         // CHECK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {

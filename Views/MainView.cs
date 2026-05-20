@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using InventoryApp.Data;
 using System.Windows.Forms;
 using InventoryApp.InventoryApp.dlg;
@@ -14,6 +15,7 @@ namespace InventoryApp.InventoryApp
         public MainView(string username)
         {
             InitializeComponent();
+            ApplyModernLayout();
             SwitchForm(new Dashboard());
 
             button1.Text = "Logout (" + username + ")";
@@ -54,6 +56,45 @@ namespace InventoryApp.InventoryApp
             {
                 SwitchForm(new Dashboard());
             }
+        }
+
+        private void ApplyModernLayout()
+        {
+            this.Text = "Anton Shoe Store Sales and Inventory System";
+            this.BackColor = Color.WhiteSmoke;
+
+            panel1.BackColor = Color.FromArgb(33, 37, 41);
+            panel2.BackColor = Color.FromArgb(248, 249, 250);
+
+            radioButton5.Appearance = Appearance.Button;
+            radioButton1.Appearance = Appearance.Button;
+            radioButton2.Appearance = Appearance.Button;
+            radioButton3.Appearance = Appearance.Button;
+
+            RadioButton[] menuButtons =
+            {
+        radioButton5,
+        radioButton1,
+        radioButton2,
+        radioButton3
+    };
+
+            foreach (RadioButton btn in menuButtons)
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderSize = 0;
+                btn.BackColor = Color.FromArgb(52, 58, 64);
+                btn.ForeColor = Color.White;
+                btn.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                btn.TextAlign = ContentAlignment.MiddleCenter;
+                btn.Height = 48;
+            }
+
+            button1.BackColor = Color.FromArgb(220, 53, 69);
+            button1.ForeColor = Color.White;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.Font = new Font("Segoe UI", 9, FontStyle.Bold);
         }
 
         //HOME TAB
