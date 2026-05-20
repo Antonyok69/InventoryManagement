@@ -127,7 +127,7 @@ namespace InventoryApp.Data
         price = price,
         stock = stock,
         category = category,
-        image = fileName
+        image = image
     };
 
     string json = JsonConvert.SerializeObject(product);
