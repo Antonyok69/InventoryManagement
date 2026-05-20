@@ -1,7 +1,8 @@
-﻿using InventoryApp.InventoryApp;
-using InventoryApp.Data;
-using System.Windows.Forms;
+﻿using InventoryApp.Data;
+using InventoryApp.InventoryApp;
 using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace InventoryApp.Views
 {
@@ -12,6 +13,7 @@ namespace InventoryApp.Views
         public UserAuth()
         {
             InitializeComponent();
+            ApplyLoginDesign();
             accountManager = new AccountManager();
         }
 
@@ -19,6 +21,29 @@ namespace InventoryApp.Views
         private int ValidateUserCredentials(string username, string password)
         {
             return accountManager.ValidateUserCredentials(username, password);
+        }
+
+        private void ApplyLoginDesign()
+        {
+            this.Text = "Anton Shoe Store Sales and Inventory System";
+            this.BackColor = Color.FromArgb(248, 249, 250);
+
+            groupBox1.Text = "";
+            groupBox1.BackColor = Color.White;
+            groupBox1.ForeColor = Color.FromArgb(33, 37, 41);
+
+            button1.BackColor = Color.FromArgb(33, 37, 41);
+            button1.ForeColor = Color.White;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+            textBox1.Font = new Font("Segoe UI", 10);
+            textBox2.Font = new Font("Segoe UI", 10);
+            checkBox1.Font = new Font("Segoe UI", 9);
+
+            label1.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            label2.Font = new Font("Segoe UI", 9, FontStyle.Bold);
         }
 
         // Process Login Form
