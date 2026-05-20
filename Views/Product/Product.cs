@@ -14,7 +14,7 @@ namespace InventoryApp
             InitializeComponent();
             productManager = new ProductManager();
             dataGridView1.DataSource = productManager.GetProducts();
-            AddToCart();
+           
         }
 
         //SEARCH AND DISPLAY RESULTS
@@ -138,43 +138,9 @@ namespace InventoryApp
             }
         }
 
-        //ADD_TO_CART DATAGRID BUTTON - Home
-        private void AddToCart()
-        {
-            DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn
-            {
-                Text = "Add",
-                UseColumnTextForButtonValue = true
-            };
-            dataGridView1.Columns.Add(buttonColumn);
-            dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-        }
+        
 
         //DATAGRIDVIEW BUTTON EVENT - Home
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
-            {
-                // Get the values from the selected row
-                string name = dataGridView1.Rows[e.RowIndex].Cells["Name"].Value.ToString();
-                int price = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Price"].Value);
-                int stock = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Stock"].Value);
-
-                // Add item to the cart
-                if (stock > 0)
-                {
-                    bool itemAdded = ProductManager.AddItemToCart(name, price);
-                    if (itemAdded)
-                    {
-                        MessageBox.Show("Product added to cart.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Product out of stock.");
-                }
-            }
-        }
+        
     }
 }
