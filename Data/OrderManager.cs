@@ -12,7 +12,7 @@ namespace InventoryApp.Data
         public OrderManager()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("http://127.0.0.1:8000/api/");
+            client.BaseAddress = new Uri("http://127.0.0.1:8001/api/");
         }
 
 public DataTable GetOrders()

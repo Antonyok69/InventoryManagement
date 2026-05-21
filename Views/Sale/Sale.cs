@@ -43,7 +43,7 @@ namespace InventoryApp.InventoryApp.Views
                 dataGridView1.Columns["Date"].Width = 160;
             }
         }
-        // CHECK BUTTON
+         // CHECK BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Order checked successfully.", "Sales", MessageBoxButtons.OK, MessageBoxIcon.Information);
