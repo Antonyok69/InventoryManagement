@@ -27,7 +27,7 @@ namespace InventoryApp.Views.Dashboard
             decimal totalRevenue = orders.AsEnumerable()
                 .Sum(row => row.Field<decimal>("Total"));
 
-            label2.Text = "$" + totalRevenue.ToString("N0");
+            label2.Text = "₱" + totalRevenue.ToString("N0");
 
             label7.Text = orders.Rows.Count.ToString();
 
@@ -37,6 +37,11 @@ namespace InventoryApp.Views.Dashboard
                 .Count();
 
             label5.Text = totalCategories.ToString();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
